@@ -14,6 +14,7 @@
 </head>
 <body>
 
+	
 <div class="super_container">
 	
 	<!-- Header -->
@@ -24,7 +25,7 @@
 			<nav class="main_nav">
 				<ul>
 					<li><a href="{% url 'home' %}">home</a></li>
-					<li><a href="{% url 'products' %}">Products</a></li>
+					
 					<li><a href="categories.html">accessories</a></li>
 					<li><a href="categories.html">lingerie</a></li>
 					<li><a href="contact.html">contact</a></li>
@@ -119,6 +120,7 @@
 		</div>
 	</div>
 
+			{% block title %}{{ product.name }}{% endblock %}
 	<!-- Product -->
 
 	<div class="product">
@@ -139,11 +141,11 @@
 				<!-- Product Image -->
 				<div class="col-lg-7">
 					<div class="product_image">
-						<div class="product_image_large"><img src="{% static 'myStore/img/product_image_1.jpg' %}" alt=""></div>
+						<div class="product_image_large"><img src="{{ product.image.url }}" alt=""></div>
 						<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
-							<div class="product_image_thumbnail" style="background-image: url({% static 'myStore/img/product_image_1.jpg' %})" data-image="images/product_image_1.jpg"></div>
-							<div class="product_image_thumbnail" style="background-image: url({% static 'myStore/img/product_image_2.jpg' %})" data-image="images/product_image_2.jpg"></div>
-							<div class="product_image_thumbnail" style="background-image: url({% static 'myStore/img/product_image_4.jpg' %})" data-image="images/product_image_4.jpg"></div>
+							<!-- <div class="product_image_thumbnail" style="background-image: url({% static 'myStore/img/product_image_1.jpg' %})" data-image="images/product_image_1.jpg"></div>
+							<div class="product_image_thumbnail" style="background-image: url({% static 'myStore/img/product_image_2.jpg' %})" data-image="images/product_image_2.jpg"></div> -->
+							<!-- <div class="product_image_thumbnail" style="background-image: url({% static 'myStore/img/product_image_4.jpg' %})" data-image="images/product_image_4.jpg"></div> -->
 						</div>
 					</div>
 				</div>
@@ -151,8 +153,8 @@
 				<!-- Product Content -->
 				<div class="col-lg-5">
 					<div class="product_content">
-						<div class="product_name">2 Piece Swimsuit</div>
-						<div class="product_price">$35.00</div>
+						<div class="product_name">{{ product.item }}</div>
+						<div class="product_price">{{ product.new_price}}</div>
 						<div class="rating rating_4" data-rating="4">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -166,7 +168,7 @@
 							<span>in stock</span>
 						</div>
 						<div class="product_text">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula.</p>
+							<p>{{product.desciption}}.</p>
 						</div>
 						<!-- Product Quantity -->
 						<div class="product_quantity_container">
@@ -212,16 +214,74 @@
 				</div>
 			</div>
 
+			
+			<div class="col-lg-4 product_col">
+				<div class="product">
+					<div class="product_image">
+						<img src=" {% static 'myStore/img/product_3.jpg' %}" alt="">
+					</div>
+					<div class="rating rating_4">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+					</div>
+					<div class="product_content clearfix">
+						<div class="product_info">
+							<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+							<div class="product_price">$145.00</div>
+						</div>
+						<div class="product_options">
+							<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+							<div class="product_fav product_option">+</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+			<div class="col-lg-4 product_col">
+				<h2>Related Items</h2>
+				{% for product in related_item %}
+				<a href="{% url 'products' product.id %}">
+
+					<div class="product">
+						<div class="product_image">
+							<img src=" {{ product.image.url }}" alt="">
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name"><a href="product.html">{{ product.item}}</a></div>
+								<div class="product_price">{{ product.new_price}}</div>
+								<div class="product_price">{{ product.old_price}}</div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+
 			<!-- Reviews -->
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col">
 					<div class="reviews">
 						<div class="reviews_title">reviews</div>
 						<div class="reviews_container">
-							<ul>
+							<ul> -->
 								<!-- Review -->
-								<li class=" review clearfix">
+								<!-- <li class=" review clearfix">
 									<div class="review_image"><img src="{% static 'myStore/img/review_1.jpg' %}" alt=""></div>
 									<div class="review_content">
 										<div class="review_name"><a href="#">Maria Smith</a></div>
@@ -237,9 +297,9 @@
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula. </p>
 										</div>
 									</div>
-								</li>
+								</li> -->
 								<!-- Review -->
-								<li class=" review clearfix">
+								<!-- <li class=" review clearfix">
 									<div class="review_image"><img src="{% static 'myStore/img/review_2.jpg' %}" alt=""></div>
 									<div class="review_content">
 										<div class="review_name"><a href="#">Maria Smith</a></div>
@@ -260,7 +320,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- Leave a Review -->
 

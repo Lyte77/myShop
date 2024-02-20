@@ -29,10 +29,10 @@
 			<nav class="main_nav">
 				<ul>
 					<li><a href="#">home</a></li>
-					<li><a href="{% url 'products' %}">Products</a></li>
+					
 					<li><a href="categories.html">accessories</a></li>
 					<li><a href="categories.html">lingerie</a></li>
-					<li><a href="contact.html">contact</a></li>
+					<li><a href="{% url 'contact' %}">contact</a></li>
 					{% if user.is_authenticated %}
 						<li>Welcome {{ user.username }}</li>
 						<li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -112,10 +112,10 @@
 				{% endif %}
 			<ul class="menu_mm">
 				<li class="menu_mm"><a href="{% url 'home' %}">home</a></li>
-				<li class="menu_mm"><a href="{% url 'products' %}">Products</a></li>
+				
 				<li class="menu_mm"><a href="#">accessories</a></li>
 				<li class="menu_mm"><a href="#">lingerie</a></li>
-				<li class="menu_mm"><a href="#">contact</a></li>
+				<li class="menu_mm"><a href="{% url 'contact' %}">contact</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -265,6 +265,53 @@
 			</div>
 			<div class="row products_container">
 
+			<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+				<h2 class="mb-12 text-2xl text-center">Categories</h2>
+
+				<div class="grid grid-cols-3 gap-3">
+					{% for categorey in categories %}
+						<div>
+							<a href="#">
+								<div class="p-6 bg-white rounded-b-xl">
+									<h2 class="text-2xl">{{ categorey.name }}</h2>
+									<p class="text-gray-500">{{ categorey.item.count }} items</p>
+
+								</div>
+
+							</a>
+						</div>
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+				<!-- Product -->
+				<div class="col-lg-4 product_col">
+					<div class="product">
+						<div class="product_image">
+							<img src=" {% static 'myStore/img/product_1.jpg' %}" alt="">
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name"><a href="product.html">Woman's Long Dress</a></div>
+								<div class="product_price">$45.00</div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<!-- Product -->
 				<div class="col-lg-4 product_col">
 					<div class="product">
@@ -341,6 +388,138 @@
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<!-- Product -->
+				<div class="col-lg-4 product_col">
+					<div class="product">
+						<div class="product_image">
+							<img src=" {% static 'myStore/img/product_3.jpg' %}" alt="">
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+								<div class="product_price">$145.00</div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 product_col">
+					<div class="product">
+						<div class="product_image">
+							<img src=" {% static 'myStore/img/product_3.jpg' %}" alt="">
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+								<div class="product_price">$145.00</div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 product_col">
+					<div class="product">
+						<div class="product_image">
+							<img src=" {% static 'myStore/img/product_3.jpg' %}" alt="">
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+								<div class="product_price">$145.00</div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 product_col">
+					<div class="product">
+						<div class="product_image">
+							<img src=" {% static 'myStore/img/product_3.jpg' %}" alt="">
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+								<div class="product_price">$145.00</div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				 
+				<div class="col-lg-4 product_col">
+					{% for product in products %}
+					<a href="{% url 'products' product.id %}">
+
+						<div class="product">
+							<div class="product_image">
+								<img src=" {{ product.image.url }}" alt="">
+							</div>
+							<div class="rating rating_4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="product.html">{{ product.item}}</a></div>
+									<div class="product_price">{{ product.new_price}}</div>
+									<div class="product_price">{{ product.old_price}}</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src=" {% static 'myStore/img/shopping-bag-white.svg' %}" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
 				</div>
 
 			</div>
@@ -445,7 +624,7 @@
 
 	<!-- Testimonials -->
 
-	<div class="testimonials">
+	<!-- <div class="testimonials">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -456,40 +635,40 @@
 				</div>
 			</div>
 			<div class="row test_slider_container">
-				<div class="col">
+				<div class="col"> -->
 
 					<!-- Testimonials Slider -->
 					<div class="owl-carousel owl-theme test_slider text-center">
 
 						<!-- Testimonial Item -->
-						<div class="owl-item">
+						<!-- <div class="owl-item">
 							<div class="test_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
 							<div class="test_content">
 								<div class="test_image"><img src=" {% static 'myStore/img/testimonials.jpg' %}" alt=""></div>
 								<div class="test_name">Christinne Smith</div>
 								<div class="test_title">client</div>
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Testimonial Item -->
-						<div class="owl-item">
+						<!-- <div class="owl-item">
 							<div class="test_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
 							<div class="test_content">
 								<div class="test_image"><img src=" {% static 'myStore/img/testimonials.jpg' %}" alt=""></div>
 								<div class="test_name">Christinne Smith</div>
 								<div class="test_title">client</div>
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Testimonial Item -->
-						<div class="owl-item">
+						<!-- <div class="owl-item">
 							<div class="test_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
 							<div class="test_content">
 								<div class="test_image"><img src=" {% static 'myStore/img/testimonials.jpg' %}" alt=""></div>
 								<div class="test_name">Christinne Smith</div>
 								<div class="test_title">client</div>
 							</div>
-						</div>
+						</div> -->
 
 					</div>
 
